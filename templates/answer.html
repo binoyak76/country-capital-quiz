@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Answer</title>
+    <style>
+        .from-papa {
+            position: fixed;
+            right: 24px;
+            bottom: 18px;
+            color: #b5651d;
+            font-family: 'Pacifico', 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.3rem;
+            opacity: 0.85;
+            pointer-events: none;
+            user-select: none;
+            z-index: 100;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% if is_correct %}
+    <h3 style="color:green">Correct!</h3>
+    {% else %}
+    <h3 style="color:red">Wrong! The correct answer is {{correct}}.</h3>
+    {% endif %}
+    <p><b>Fun Fact:</b> {{fun_fact}}</p>
+    <a href="{{next_url}}">Next Question</a>
+    <div class="from-papa">From Papa</div>
+</body>
+</html>

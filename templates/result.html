@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Baloo 2', 'Comic Sans MS', 'Comic Sans', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #fff176 0%, #2ec4b6 100%);
+            margin: 0;
+            padding: 0;
+        }
+        .centerbox {
+            max-width: 420px;
+            margin: 80px auto 0 auto;
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(46,196,182,0.25), 0 2px 8px #ffca3a33;
+            padding: 36px 32px 32px 32px;
+            text-align: center;
+            border: 4px solid #2563eb;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #ff595e;
+            margin-bottom: 18px;
+            font-size: 2rem;
+            text-shadow: 2px 2px 0 #fff, 4px 4px 0 #2ec4b6;
+            font-family: 'Baloo 2', cursive, sans-serif;
+        }
+        .score {
+            font-size: 1.3rem;
+            color: #2ec4b6;
+            margin-bottom: 24px;
+            font-weight: bold;
+        }
+        a, button {
+            display: inline-block;
+            background: linear-gradient(90deg, #2563eb 0%, #ffca3a 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 14px 32px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 16px;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 8px #2ec4b655, 0 1px 2px #ff595e33;
+            text-shadow: 1px 1px 0 #fff176;
+        }
+        a:hover, button:hover {
+            background: linear-gradient(90deg, #ff595e 0%, #2563eb 100%);
+            color: #fff176;
+            box-shadow: 0 4px 16px #ff595e44;
+        }
+        .from-papa {
+            position: fixed;
+            right: 24px;
+            bottom: 18px;
+            color: #b5651d;
+            font-family: 'Pacifico', 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.3rem;
+            opacity: 0.95;
+            pointer-events: none;
+            user-select: none;
+            z-index: 100;
+            text-shadow: 1px 1px 0 #fff176, 0 2px 8px #fff;
+        }
+        @media (max-width: 600px) {
+            .centerbox {
+                padding: 18px 6px 18px 6px;
+                margin: 30px 4px 0 4px;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            .score {
+                font-size: 1.1rem;
+            }
+            a, button {
+                font-size: 1rem;
+                padding: 12px 10vw;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="centerbox">
+        <h2>🎉 Great Job! 🎉</h2>
+        <div class="score">Your score: {{score}} / {{total}}</div>
+        <a href="{{ url_for('index') }}">Play Again</a>
+    </div>
+    <div class="from-papa">From Papa</div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rea's World Explorer Quiz!</title>
+    <style>
+    body {
+        font-family: 'Baloo 2', 'Comic Sans MS', 'Comic Sans', 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #fff176 0%, #2ec4b6 100%);
+        margin: 0;
+        padding: 0;
+    }
+    .cute-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #ff595e;
+        margin-bottom: 0.2em;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 0 #fff, 4px 4px 0 #2ec4b6;
+        font-family: 'Baloo 2', cursive, sans-serif;
+        font-weight: 900;
+    }
+    .cute-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #2563eb;
+        margin-bottom: 1.5em;
+        font-style: italic;
+        font-family: 'Baloo 2', cursive, sans-serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 0 #fff;
+    }
+    .centerbox {
+        max-width: 700px;
+        margin: 40px auto 0 auto;
+        background: #fff;
+        border-radius: 28px;
+        box-shadow: 0 8px 32px rgba(46,196,182,0.25), 0 2px 8px #ffca3a33;
+        padding: 36px 32px 32px 32px;
+        border: 4px solid #2563eb;
+        box-sizing: border-box;
+    }
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 32px;
+        align-items: end;
+    }
+    .form-grid label {
+        font-weight: 900;
+        color: #2ec4b6;
+        font-size: 1.08rem;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+        display: block;
+        text-shadow: 1px 1px 0 #fff176;
+    }
+    .form-grid select,
+    .form-grid input[type="number"] {
+        width: 100%;
+        padding: 14px 14px;
+        border: 2px solid #ff595e;
+        border-radius: 12px;
+        font-size: 1.08rem;
+        background: #f6fff8;
+        transition: border 0.2s, box-shadow 0.2s;
+        margin-bottom: 0;
+        box-shadow: 0 1px 4px #2ec4b622;
+    }
+    .form-grid select:focus,
+    .form-grid input[type="number"]:focus {
+        border: 2.5px solid #2563eb;
+        outline: none;
+        background: #fffde4;
+        box-shadow: 0 0 0 2px #ffca3a55;
+    }
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    button {
+        width: 100%;
+        background: linear-gradient(90deg, #2563eb 0%, #ffca3a 100%);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 16px 0;
+        font-size: 1.15rem;
+        font-weight: 900;
+        cursor: pointer;
+        margin-top: 12px;
+        box-shadow: 0 2px 8px #2ec4b655, 0 1px 2px #ff595e33;
+        letter-spacing: 1px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        text-shadow: 1px 1px 0 #fff176;
+    }
+    button:hover {
+        background: linear-gradient(90deg, #ff595e 0%, #2563eb 100%);
+        color: #fff176;
+        box-shadow: 0 4px 16px #ff595e44;
+    }
+    .error {
+        color: #fff;
+        background: #ff595e;
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin-bottom: 18px;
+        font-size: 1rem;
+        border: 2px solid #fff176;
+        font-weight: bold;
+        text-shadow: 1px 1px 0 #b5ead7;
+    }
+    #streaks {
+        margin: 24px 0 10px 0;
+        min-height: 200px;
+        background: #f6fff8;
+        border-radius: 12px;
+        border: 2px dashed #2563eb;
+        padding: 10px 0;
+        box-shadow: 0 1px 4px #2ec4b622;
+    }
+    .from-papa {
+        position: fixed;
+        right: 24px;
+        bottom: 18px;
+        color: #b5651d;
+        font-family: 'Pacifico', 'Comic Sans MS', cursive, sans-serif;
+        font-size: 1.3rem;
+        opacity: 0.95;
+        pointer-events: none;
+        user-select: none;
+        z-index: 100;
+        text-shadow: 1px 1px 0 #fff176, 0 2px 8px #fff;
+    }
+    @media (max-width: 900px) {
+        .centerbox {
+            max-width: 98vw;
+            padding: 18px 6px 18px 6px;
+        }
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 16px 0;
+        }
+    }
+    @media (max-width: 600px) {
+        .centerbox {
+            padding: 12px 2vw 12px 2vw;
+            margin: 10px 2vw 0 2vw;
+        }
+        .cute-title {
+            font-size: 1.5rem;
+        }
+        button {
+            font-size: 1rem;
+            padding: 12px 0;
+        }
+        .form-grid select,
+        .form-grid input[type="number"] {
+            font-size: 1rem;
+            padding: 10px 10px;
+        }
+    }
+</style>
+    <!-- Google Fonts for Baloo 2 and Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function fetchStreaks() {
+            var profile = document.getElementById('profile').value;
+            if (!profile) return;
+            fetch('/streaks?profile=' + encodeURIComponent(profile))
+                .then(response => response.json())
+                .then(data => {
+                    var ctx = document.getElementById('streakChart').getContext('2d');
+                    if(window.streakChartObj) window.streakChartObj.destroy();
+
+                    // Calculate colors based on percentage for each round
+                    var bgColors = [];
+                    for (let i = 0; i < data.scores.length; i++) {
+                        let percent = data.totals[i] ? (data.scores[i] / data.totals[i]) : 0;
+                        if (percent < 0.5) {
+                            bgColors.push('#ff595e'); // red
+                        } else if (percent < 1) {
+                            bgColors.push('#ffca3a'); // yellow-orange
+                        } else {
+                            bgColors.push('#2ec4b6'); // mint green (full score)
+                        }
+                    }
+
+                    window.streakChartObj = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.labels,
+                            datasets: [{
+                                label: 'Last 10 Scores',
+                                data: data.scores,
+                                backgroundColor: bgColors
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false },             
+                                tooltip: {
+                                    callbacks: {
+                                        label: function (context) {
+                                            // context.dataIndex gives the index of the bar
+                                            const score = data.scores[context.dataIndex];
+                                            const total = data.totals[context.dataIndex];
+                                            return `Score: ${score} / ${total}`;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: { beginAtZero: true, suggestedMax: Math.max(...data.totals, 10) }
+                            }
+                        }
+                    });
+                });
+                
+        }
+    </script>
+</head>
+<body>
+    <div class="centerbox">
+        <h1 class="cute-title">🦄 Rea's World Explorer Quiz! 🌍</h1>
+        <p class="cute-subtitle">Let’s travel the globe and have fun learning!</p>
+        <form method="post">
+            <div class="form-grid">
+                <div class="full-width">
+                    <label>User Profile:</label>
+                    <select name="profile" id="profile" required onchange="fetchStreaks()">
+                        <option value="" disabled selected>Select your profile</option>
+                        <option value="Rea">Rea</option>
+                        <option value="Nio">Nio</option>
+                        <option value="Sangeeta">Sangeeta</option>
+                        <option value="Binoy">Binoy</option>
+                    </select>
+                </div>
+                <div class="full-width" id="streaks">
+                    <canvas id="streakChart" width="400" height="180"></canvas>
+                </div>
+                <div>
+                    <label>Continent:</label>
+                    <select name="continent">
+                        {% for c in continents %}
+                        <option value="{{c}}">{{c}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label>Difficulty:</label>
+                    <select name="difficulty">
+                        {% for d in difficulties %}
+                        <option value="{{d}}">{{d}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label>Number of Questions (max {{maxq}}):</label>
+                    <input type="number" name="num_questions" value="5" min="1" max="{{maxq}}">
+                </div>
+                <div>
+                    <label>Quiz Mode:</label>
+                    <select name="mode">
+                        <option value="country_to_capital">Country → Capital</option>
+                        <option value="capital_to_country">Capital → Country</option>
+                        <option value="flag_to_country">Flag → Country</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+                    <button type="submit">Start Quiz</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="from-papa">from - BAK</div>
+</body>
+</html>

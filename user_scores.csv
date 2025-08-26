@@ -1,0 +1,35 @@
+profile,area,sub,difficulty,score,total,timestamp
+Binoy,World,Country->Capital,All,5,5,2025-05-26T21:53:39.693194
+Binoy,World,Capital->Country,All,5,5,2025-05-26T21:56:02.745555
+Binoy,World,Flag->Country,Difficult,5,5,2025-05-26T21:57:21.387510
+Binoy,World,Country->Capital,All,10,10,2025-05-26T21:59:00.958472
+Binoy,South America,Capital->Country,Difficult,3,5,2025-05-26T22:01:01.015764
+Binoy,World,Country->Capital,All,5,5,2025-05-26T22:41:39.154453
+Binoy,World,Country->Capital,All,5,5,2025-05-26T22:42:44.277510
+Binoy,World,Capital->Country,Difficult,5,5,2025-05-26T22:44:10.571993
+Binoy,World,Country->Capital,Difficult,10,10,2025-05-26T22:49:15.587290
+Binoy,World,Country->Capital,Difficult,4,5,2025-05-26T23:02:27.604961
+Rea,Europe,Country->Capital,Easy,5,5,2025-05-26T23:14:05.110558
+Rea,Europe,Capital->Country,All,5,5,2025-05-26T23:16:07.189647
+Rea,Asia,Capital->Country,Easy,4,5,2025-05-26T23:17:54.456578
+Rea,World,Flag->Country,Easy,5,5,2025-05-26T23:18:32.977689
+Rea,World,Country->Capital,All,2,5,2025-05-26T23:20:18.100094
+Binoy,World,Country->Capital,All,5,5,2025-05-27T22:24:16.238697
+Binoy,World,Country->Capital,All,5,5,2025-05-27T22:25:32.013239
+Binoy,Oceania,Country->Capital,All,3,5,2025-05-27T22:27:25.673312
+Binoy,World,Country->Capital,All,4,5,2025-05-27T22:45:24.043056
+Binoy,World,Flag->Country,All,4,5,2025-05-27T22:46:39.502180
+Unknown,World,Country->Capital,All,0,0,2025-05-27T23:35:25.359564
+Binoy,World,Country->Capital,All,5,5,2025-06-09T02:07:52.588193
+Nio,World,Flag->Country,Difficult,1,5,2025-06-09T02:08:46.419018
+Nio,Europe,Country->Capital,Difficult,5,5,2025-06-09T02:09:49.458388
+Sangeeta,Asia,Country->Capital,Easy,4,5,2025-07-28T19:00:25.490613
+Rea,World,Flag->Country,All,5,5,2025-07-28T19:02:35.274395
+Binoy,World,Flag->Country,All,4,7,2025-07-28T20:33:59.220280
+Binoy,World,Country->Capital,All,7,8,2025-07-28T21:26:33.197037
+Binoy,Asia,Country->Capital,All,10,10,2025-08-25T21:16:28.166720
+Binoy,Europe,Country->Capital,Easy,6,6,2025-08-25T21:20:30.935107
+Binoy,World,,All,2,2,2025-08-25T21:31:46.115774
+Binoy,South America,country->capital,Easy,3,3,2025-08-25T21:35:50.460803
+Rea,Asia,country_to_capital,All,4,5,2025-08-25T21:42:54.923439
+Binoy,World,country_to_capital,Difficult,2,2,2025-08-25T22:47:16.442180
